@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/5.2/examples/album/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+    {% block extrahead %} {%endblock%}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
@@ -96,7 +96,7 @@
           <ul class="list-unstyled">
             <li><a href="{{ portal.social_network_one }}" class="text-white">Follow on Facebook</a></li>
             <li><a href="{{ portal.social_network_two }}" class="text-white">Like on Twitter</a></li>
-            <li><a href="{{ portal.social_network_two }}" class="text-white">About</a></li>
+            <li><a href="{% url 'about' %}" class="text-white">About</a></li>
             <li><a href="mailto:{{ portal.email }}" class="text-white">Email me</a></li>
           </ul>
         </div>

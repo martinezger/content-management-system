@@ -4,8 +4,8 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">{{object.title}}</h1>
-        <p class="lead text-muted">{{object.short_content}}</p>
+        <h1 class="fw-light">{{article.title}}</h1>
+        <p class="lead text-muted">{{article.short_content}}</p>
        
       </div>
     </div>
@@ -16,7 +16,7 @@
         <img height="225" src="{{ object.image.url }}" /> 
       </div>
       <div style="padding-top: 2em;">
-        <p class="lead" align="justify">{{object.content}}.</p>
+       {{article.content | safe }}
       </div>
     </div>
   </main>

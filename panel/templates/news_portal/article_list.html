@@ -1,0 +1,41 @@
+{% extends "news_portal/base.html" %}
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container" style="margin-top: 1em;">
+      
+     <a type="button" href="{% url 'article-create' %}" class="btn btn-sm btn-outline-primary">New Post</a> 
+        
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">title</th>
+      <th scope="col">publisher</th>
+      <th scope="col">date published</th>
+      <th scope="col">date created</th>
+      <th scope="col">date updated</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+        <tbody>
+          {%for article in articles %}
+            <tr>
+            <th scope="row">1</th>
+            <td>{{article.title}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.date_published}}</td>
+            <td>{{article.date_created}}</td>
+            <td>{{article.date_updated}}</td>
+            <td>
+              <a type="button" href="{% url 'article-update' article.id %}" class="btn btn-sm btn-outline-warning">Edit</a>
+              <a type="button" href="{% url 'article-delete' article.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+        
+    </div>
+  </main>
+{% endblock %}

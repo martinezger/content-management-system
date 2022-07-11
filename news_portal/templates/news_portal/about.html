@@ -1,0 +1,36 @@
+{% extends "news_portal/base.html" %}
+
+{% block main %}
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">About</h1>
+        <p class="lead text-muted">This is a simple Context Managment System</p>
+       
+      </div>
+    </div>
+  </section>
+  <main class="flex-shrink-0">
+    <div class="container">
+        
+        <p class="lead" align="justify">
+            Justifying text can mean different things, but here we consider "justification 
+            on both sides", or "double justification", where text lines are justified both on the left and on the right. 
+            That is, all lines except (usually) the last one have equal width; the method used to achieve that is 
+            typically to leave extra space between words as needed. Such justification is very common in books and 
+            other printed matter and often regarded as an essential property of quality print­ing. On computer screens, 
+            it's more debatable. But before discussing whether we should try to justify text on our Web pages, we'll 
+            discuss the how it could be done.
+         </p>
+         <p class="lead" align="justify">
+            Sometimes the expression right justify is used to mean what was described above. Perhaps the reason to 
+            that is that left justification is taken as self-evident, so "right justification" means justifying to 
+            the right too. However, in HTML and CSS specifications, "right justification" 
+            (achieved by using align="right" or text-align:right) for text means "ragged left": lines are justified
+             on the right only. This is not very common, and should be used for very special effects only
+        </p>
+      
+    </div>
+  </main>
+
+{% endblock %}
