@@ -18,11 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from panel.views import show_index
-from news_portal.views import MainPageView
+from news_portal.views import MainPageView, ArticleDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainPageView.as_view()),
+    path('', MainPageView.as_view(), name='main-page'),
+    path('<pk>/', ArticleDetailView.as_view(), name='article-detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

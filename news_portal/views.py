@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from news_portal.models import Article, Portal
 
 
@@ -13,3 +13,14 @@ class MainPageView(ListView):
         context['headline'] = Article.objects.filter(is_headline=True).order_by('date_updated').first()
         context['portal'] = Portal.objects.order_by('date_updated').first()
         return context
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['portal'] = Portal.objects.order_by('date_updated').first()
+        return context
+
+    
