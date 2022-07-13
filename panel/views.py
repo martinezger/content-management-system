@@ -21,6 +21,8 @@ class ArticleCreateView(CreateView):
 class ArticleUpdateView(BaseView, UpdateView):
     model = Article
     fields = ['title', 'short_content', 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
+    success_url = reverse_lazy("panel-page")
+
     
 
 class ArticleDeleteView(BaseView, DeleteView):
