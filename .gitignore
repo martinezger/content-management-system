@@ -134,3 +134,5 @@ test_result.xml
 *.sqlite3
 
 .vscode/
+
+media/
