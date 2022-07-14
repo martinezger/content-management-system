@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, TemplateView, View
 from news_portal.models import Article, Portal
 
 
+
+
 class BaseView(View):
 
      def get_context_data(self, **kwargs):
