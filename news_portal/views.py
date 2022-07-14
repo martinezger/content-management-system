@@ -3,13 +3,15 @@ from django.views.generic import ListView, DetailView, TemplateView, View
 from news_portal.models import Article, Portal
 
 
+
+
 class BaseView(View):
 
      def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['headline'] = Article.objects.filter(is_headline=True).order_by('date_updated').first()
         context['portal'] = Portal.objects.order_by('date_updated').first()
-        return context
+        return context    
 
 
 class About(BaseView, TemplateView):
@@ -32,5 +34,3 @@ class ArticleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['portal'] = Portal.objects.order_by('date_updated').first()
         return context
-
-        # http://localhost:8000/article/2/

@@ -1,11 +1,18 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from news_portal.models import Article, Portal
 from news_portal.views import BaseView
 
+
+@login_required
+def dummy(request):
+    render(request, "")
 
 class PanelView(LoginRequiredMixin, BaseView, ListView):
     
@@ -39,3 +46,13 @@ class PanelLogin(LoginView):
 
 class PanelLogout(LogoutView):
     template_name = 'news_portal/panel_logout.html'
+
+
+class SignUpView(SuccessMessageMixin, CreateView):
+  template_name = 'news_portal/crear_cuenta_form.html'
+  success_url = reverse_lazy('panel-page')
+  form_class = UserCreationForm
+  success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
+
+
+
