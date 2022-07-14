@@ -1,1 +1,4 @@
 django-ckeditor==6.4.2
+Pillow==9.1.1
+django==4.0.4
+
