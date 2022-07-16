@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from news_portal.models import Article, Portal
 from news_portal.views import BaseView
@@ -21,22 +21,25 @@ class PanelView(LoginRequiredMixin, BaseView, ListView):
     context_object_name = "articles"
 
 
-class ArticleCreateView(LoginRequiredMixin, CreateView):
+class ArticleCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Article
     fields = ['short_content','title' , 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
     template_name = "news_portal/article_form.html"
     success_url = reverse_lazy("panel-page")
+    permission_required = ("news_portal.add_article")
 
 
-class ArticleUpdateView(LoginRequiredMixin, BaseView, UpdateView):
+class ArticleUpdateView(LoginRequiredMixin, PermissionRequiredMixin, BaseView, UpdateView):
     model = Article
     fields = ['title', 'short_content', 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
     success_url = reverse_lazy('panel-page')
+    permission_required = ("news_portal.change_article")
     
 
-class ArticleDeleteView(LoginRequiredMixin, BaseView, DeleteView):
+class ArticleDeleteView(LoginRequiredMixin, PermissionRequiredMixin, BaseView, DeleteView):
     model = Article
     success_url = reverse_lazy('panel-page')
+    permission_required = ("news_portal.delete_article")
     
 
 class PanelLogin(LoginView):
