@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from news_portal.models import Article, Portal
+from news_portal.models import Article, Portal, Publisher
 from news_portal.views import BaseView
 
 
@@ -56,6 +57,28 @@ class SignUpView(SuccessMessageMixin, CreateView):
   success_url = reverse_lazy('panel-page')
   form_class = UserCreationForm
   success_message = "¡¡ Se creo tu perfil satisfactoriamente !!"
+
+
+class UserProfile(LoginRequiredMixin,UserPassesTestMixin, DetailView):
+
+    model = Publisher
+    template_name = "user_profile/user_detail.html"
+
+    def test_func(self):
+        return self.request.user.id == int(self.kwargs['pk'])
+
+
+class UserUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+
+    model = User
+    template_name = "user_profile/user_form.html"
+    fields = ["username", "email", "first_name", "last_name"]
+
+    def get_success_url(self):
+        return reverse_lazy("user-detail", kwargs={"pk": self.request.user.id})
+
+    def test_func(self):
+        return self.request.user.id == int(self.kwargs['pk'])
 
 
 
