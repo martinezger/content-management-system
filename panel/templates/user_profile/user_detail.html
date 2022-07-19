@@ -1,0 +1,11 @@
+<a href="{% url 'panel-page' %}">Back to Aricles List</a>
+<a href="{% url 'user-update' user.id %}">Update Profile</a>
+
+<ul>
+    <li>Name: {{object.user.first_name}}<li>
+    <li>Last Name: {{object.user.last_name}}<li>
+    <li>email: {{object.user.email}} </li>
+    <li>username: {{object.user.username}}</li>
+</ul>
+
+<img height="128" src="{{ object.avatar.url }}" />

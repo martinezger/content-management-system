@@ -131,3 +131,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = "panel-login"
 
+#   http://localhost:8000/panel/user/2/edit

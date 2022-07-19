@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 
 class Publisher(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    avatar = models.ImageField(upload_to="avatars", null=True, blank=True)
+    avatar = models.ImageField(upload_to="avatars", null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
