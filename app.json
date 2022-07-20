@@ -1,0 +1,25 @@
+{
+  "name": "Simple Content Management System",
+  "description": "Yet another content management system built with django",
+  "repository": "https://github.com/martinezger/content-management-system",
+  "logo": "https://cdn-icons-png.flaticon.com/512/5765/5765668.png",
+  "keywords": ["django", "cms"],
+  "env": {
+    "SECRET": {
+      "description": "RANDOM SECRET.",
+      "generator": "secret"
+    },
+    "ALLOWED_HOST": {
+      "description": "Leave the * or your-app-name.herokuapp.com",
+      "value": "*"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "11"
+      }
+    }
+  ]
+}

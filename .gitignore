@@ -136,3 +136,6 @@ test_result.xml
 .vscode/
 
 media/
+
+static/
+heroku/
