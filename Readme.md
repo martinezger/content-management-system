@@ -69,3 +69,6 @@ windows:
 ```bash
 c:\> py mananage.py runserver
 ```
+If everthing goes well you should be able to open the browser and see the application run
+
+
