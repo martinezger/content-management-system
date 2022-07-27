@@ -70,5 +70,6 @@ windows:
 c:\> py mananage.py runserver
 ```
 Go to localhost:8000/
+to have access to the app.
 If everthing goes well you should be able to open the browser and see the application run
 
