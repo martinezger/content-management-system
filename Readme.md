@@ -67,3 +67,4 @@ windows:
 ```bash
 c:\> py mananage.py runserver
 ```
+Go to localhost:8000/
